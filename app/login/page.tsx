@@ -1,42 +1,23 @@
 'use client'
 
-import { useSearchParams, useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 
-const PASSWORDS: Record<string, string> = {
-  china: 'RedLine2024',
-  usa: 'Minerals4200',
-  valdoria: 'OptionB2024',
-}
-
 export default function LoginPage() {
-  const searchParams = useSearchParams()
   const router = useRouter()
-  const delegation = searchParams.get('delegation') || 'china'
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
 
-  const delegationNames: Record<string, string> = {
-    china: "People's Republic of China",
-    usa: 'United States of America',
-    valdoria: 'Republic of Valdoria',
-  }
-
-  const delegationColors: Record<string, { border: string; text: string; bg: string }> = {
-    china: { border: '#c8102e', text: '#c8102e', bg: 'rgba(200, 16, 46, 0.05)' },
-    usa: { border: '#c9a84c', text: '#c9a84c', bg: 'rgba(201, 168, 76, 0.05)' },
-    valdoria: { border: '#2d6a2d', text: '#2d6a2d', bg: 'rgba(45, 106, 45, 0.05)' },
-  }
-
-  const colors = delegationColors[delegation] || delegationColors.china
+  const delegation = 'china'
+  const correctPassword = 'RedLine2024'
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setError('')
     setIsLoading(true)
 
-    if (password === PASSWORDS[delegation as keyof typeof PASSWORDS]) {
+    if (password === correctPassword) {
       const token = `${delegation}:${Date.now()}`
       document.cookie = `auth_token=${token}; path=/; max-age=86400`
       router.push(`/${delegation}`)
@@ -61,14 +42,14 @@ export default function LoginPage() {
         width: '100%',
         maxWidth: '420px',
         background: '#fff',
-        border: `2px solid ${colors.border}`,
+        border: '2px solid #c8102e',
         padding: '40px 32px',
       }}>
         <div style={{
           fontSize: '12px',
           letterSpacing: '0.2em',
           textTransform: 'uppercase',
-          color: colors.text,
+          color: '#c8102e',
           marginBottom: '8px',
           fontWeight: 600,
         }}>
@@ -83,7 +64,7 @@ export default function LoginPage() {
           marginBottom: '8px',
           marginTop: '20px',
         }}>
-          {delegationNames[delegation as keyof typeof delegationNames]}
+          People's Republic of China
         </h1>
 
         <p style={{
@@ -148,7 +129,7 @@ export default function LoginPage() {
             style={{
               width: '100%',
               padding: '12px 16px',
-              background: isLoading ? '#ccc4b0' : colors.border,
+              background: isLoading ? '#ccc4b0' : '#c8102e',
               color: '#fff',
               border: 'none',
               fontSize: '11px',

@@ -67,51 +67,17 @@ export default function Home() {
             e.currentTarget.style.background = 'transparent'
             e.currentTarget.style.borderColor = '#c8102e'
           }}>
-            PRC Dossier
-          </a>
-          <a href="/login?delegation=usa" style={{
-            padding: '20px',
-            border: '2px solid #c9a84c',
-            color: '#c9a84c',
-            textDecoration: 'none',
-            textTransform: 'uppercase',
-            fontSize: '12px',
-            fontWeight: 600,
-            letterSpacing: '0.1em',
-            transition: 'all 0.2s',
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.background = 'rgba(201, 168, 76, 0.1)'
-            e.currentTarget.style.borderColor = '#a68f00'
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.background = 'transparent'
-            e.currentTarget.style.borderColor = '#c9a84c'
-          }}>
-            USA Dossier
-          </a>
-          <a href="/login?delegation=valdoria" style={{
-            padding: '20px',
-            border: '2px solid #2d6a2d',
-            color: '#2d6a2d',
-            textDecoration: 'none',
-            textTransform: 'uppercase',
-            fontSize: '12px',
-            fontWeight: 600,
-            letterSpacing: '0.1em',
-            transition: 'all 0.2s',
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.background = 'rgba(45, 106, 45, 0.1)'
-            e.currentTarget.style.borderColor = '#1f4f1f'
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.background = 'transparent'
-            e.currentTarget.style.borderColor = '#2d6a2d'
-          }}>
-            Valdoria Dossier
+            🇨🇳 PRC Dossier
           </a>
         </div>
+        <p style={{
+          fontSize: '11px',
+          color: '#7a6f62',
+          marginTop: '30px',
+          letterSpacing: '0.08em',
+        }}>
+          PASSWORD PROTECTED · DELEGATION EYES ONLY
+        </p>
       </div>
     </div>
   )
