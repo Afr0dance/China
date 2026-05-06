@@ -11,25 +11,33 @@
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   body{background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans',sans-serif;font-weight:300;min-height:100vh;overflow-x:hidden}
   .stamp{position:fixed;top:40px;right:-30px;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:0.2em;color:var(--classified);border:2px solid var(--classified);padding:6px 14px;transform:rotate(12deg);opacity:0.18;pointer-events:none;z-index:0;white-space:nowrap}
+
+  /* ── HEADER ── */
   header{background:var(--ink);color:var(--paper);position:sticky;top:0;z-index:100;border-bottom:3px solid var(--red)}
-  .header-inner{max-width:1100px;margin:0 auto;padding:20px 32px;display:flex;flex-direction:column;align-items:center;gap:16px}
-  .header-logos{display:flex;align-items:center;justify-content:center;gap:32px;margin-bottom:10px}
-  .un-logo{width:100px;height:auto}
-  .flag-logo{width:120px;height:80px;object-fit:contain}
-  .header-title{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;letter-spacing:0.01em;text-align:center}
-  .header-sub{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:0.12em;margin-top:2px;text-align:center}
-  .classified-badge{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:0.18em;color:var(--red);border:1.5px solid var(--red);padding:5px 12px}
+  .header-inner{max-width:1100px;margin:0 auto;padding:18px 32px;display:flex;flex-direction:column;align-items:center;gap:12px}
+  .header-logos{display:flex;align-items:center;justify-content:center;gap:36px}
+  .header-title{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;letter-spacing:0.01em;text-align:center}
+  .header-sub{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:0.12em;text-align:center}
+  .classified-badge{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:0.18em;color:var(--red);border:1.5px solid var(--red);padding:5px 12px;margin-top:4px}
+
+  /* ── NAV ── */
   nav{background:var(--smoke);border-bottom:1px solid #3a3228}
   .nav-inner{max-width:1100px;margin:0 auto;padding:0 32px;display:flex;gap:0;overflow-x:auto;scrollbar-width:none;align-items:center}
   .nav-inner::-webkit-scrollbar{display:none}
   .tab-btn{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);background:none;border:none;border-bottom:2px solid transparent;padding:12px 16px;cursor:pointer;white-space:nowrap;transition:color 0.15s,border-color 0.15s}
   .tab-btn:hover{color:var(--paper)}.tab-btn.active{color:var(--red);border-bottom-color:var(--red)}
-  .view-toggle{margin-left:auto;flex-shrink:0;font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);background:none;border:1px solid #3a3228;padding:6px 12px;cursor:pointer;white-space:nowrap;align-self:center;transition:color 0.15s,border-color 0.15s}
+  .view-toggle{margin-left:auto;flex-shrink:0;font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);background:none;border:1px solid #3a3228;padding:6px 14px;cursor:pointer;white-space:nowrap;align-self:center;transition:color 0.15s,border-color 0.15s}
   .view-toggle:hover{color:var(--paper);border-color:var(--muted)}.view-toggle.doc-active{color:var(--red);border-color:var(--red)}
   body.doc-mode .tab-btn{opacity:0.4;pointer-events:none}body.doc-mode .tab-btn.active{opacity:1}
   body.doc-mode .section{display:block!important}
-  main{max-width:1100px;margin:0 auto;padding:32px 32px 80px}
+  .doc-divider{display:none;align-items:center;gap:16px;margin:48px 0 36px}body.doc-mode .doc-divider{display:flex}
+  .doc-divider-line{flex:1;height:1px;background:var(--border)}.doc-divider-label{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.2em;color:var(--muted);white-space:nowrap}
+
+  /* ── LAYOUT ── */
+  main{max-width:1100px;margin:0 auto;padding:36px 32px 80px}
   .section{display:none}.section.active{display:block}
+
+  /* ── OVERVIEW TABLE ── */
   .overview-hero{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:28px;background:var(--border);border:1px solid var(--border)}
   .hero-cell{background:var(--paper);padding:20px 24px}.hero-cell.span2{grid-column:span 2;background:var(--ink);color:var(--paper)}
   .hero-label{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
@@ -37,41 +45,77 @@
   .hero-value{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;line-height:1.2}
   .hero-cell.span2 .hero-value{font-size:13px;font-family:'IBM Plex Sans',sans-serif;font-weight:300;color:#c8bfb2;line-height:1.7}
   .red-text{color:var(--red)}
+
+  /* ── STAT GRID ── */
   .stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);border:1px solid var(--border);margin-bottom:28px}
   .stat-card{background:var(--paper);padding:18px 20px}
-  .stat-number{font-family:'Playfair Display',serif;font-size:32px;font-weight:900;color:var(--red);line-height:1;margin-bottom:4px}
+  .stat-number{font-family:'Playfair Display',serif;font-size:34px;font-weight:900;color:var(--red);line-height:1;margin-bottom:4px}
   .stat-label{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted)}
   .stat-desc{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.5}
-  .sec-header{display:flex;align-items:baseline;gap:14px;margin-bottom:20px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+
+  /* ── SECTION HEADERS ── */
+  .sec-header{display:flex;align-items:baseline;gap:14px;margin-bottom:22px;padding-bottom:10px;border-bottom:1px solid var(--border)}
   .sec-number{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--red);letter-spacing:0.1em}
   .sec-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:700}
-  .card{background:white;border:1px solid var(--border);border-left:3px solid var(--red);padding:20px 22px;margin-bottom:12px}
+
+  /* ── CARDS ── */
+  .card{background:white;border:1px solid var(--border);border-left:3px solid var(--red);padding:20px 22px;margin-bottom:14px}
   .card-title{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink);margin-bottom:10px}
-  .card-body{font-size:13px;line-height:1.7;color:#3a3228}.card-body p+p{margin-top:10px}
+  .card-body{font-size:13.5px;line-height:1.75;color:#3a3228}.card-body p+p{margin-top:10px}
+  .card-body ul{margin:10px 0 0 18px}.card-body li{margin-bottom:7px;line-height:1.65}
+
+  /* ── TOOL GRID ── */
+  .tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+  .tool-card{background:white;border:1px solid var(--border);padding:20px 22px;position:relative;overflow:hidden}
+  .tool-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:var(--red)}
+  .tool-number{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.2em;color:var(--red);margin-bottom:6px}
+  .tool-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;margin-bottom:10px}
+  .tool-body{font-size:13px;line-height:1.7;color:#4a3f35}
+
+  /* ── LAYER SPLIT ── */
+  .layer-split{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--border);border:1px solid var(--border);margin-bottom:20px}
+  .layer-public{background:var(--paper);padding:24px}.layer-private{background:var(--ink);color:var(--paper);padding:24px}
+  .layer-tag{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;padding:4px 10px;display:inline-block;margin-bottom:12px}
+  .layer-tag.pub{background:var(--ink);color:var(--paper)}.layer-tag.priv{background:var(--red);color:white}
+  .layer-heading{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;margin-bottom:12px}
+  .layer-private .layer-heading{color:var(--paper)}
+  .layer-body{font-size:13px;line-height:1.75}
+  .layer-private .layer-body{color:#c8bfb2}
+  .bullet-list{list-style:none;padding:0}
+  .bullet-list li{font-size:13px;line-height:1.7;color:#3a3228;padding:7px 0 7px 18px;position:relative;border-bottom:1px solid var(--paper-dark)}
+  .bullet-list li:last-child{border-bottom:none}
+  .bullet-list li::before{content:'›';position:absolute;left:0;color:var(--red);font-family:'IBM Plex Mono',monospace;font-size:11px}
+  .layer-private .bullet-list li{color:#c8bfb2;border-bottom-color:#3a3228}
+
+  /* ── PRIORITY TABLE ── */
   .priority-table{width:100%;border-collapse:collapse;background:white;border:1px solid var(--border);margin-top:20px}
-  .priority-table th{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--paper);background:var(--ink);padding:12px 16px;text-align:left;font-weight:500}
-  .priority-table td{padding:12px 16px;font-size:12px;line-height:1.5;border-bottom:1px solid var(--paper-dark);vertical-align:top}
+  .priority-table th{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--paper);background:var(--ink);padding:12px 14px;text-align:left;font-weight:500}
+  .priority-table td{padding:13px 14px;font-size:13px;line-height:1.55;border-bottom:1px solid var(--paper-dark);vertical-align:top}
   .priority-table tr:last-child td{border-bottom:none}.priority-table tr:hover td{background:var(--paper-dark)}
-  .rank-badge{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;color:var(--red);width:24px}
-  .alert{background:#1a0a0a;color:#f5c0c0;border-left:3px solid var(--red);padding:14px 18px;margin-bottom:18px;font-family:'IBM Plex Mono',monospace;font-size:10px;line-height:1.6;letter-spacing:0.04em}
+  .rank-badge{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:var(--red);width:28px}
+
+  /* ── ALERT ── */
+  .alert{background:#1a0a0a;color:#f5c0c0;border-left:3px solid var(--red);padding:15px 18px;margin-bottom:18px;font-family:'IBM Plex Mono',monospace;font-size:11px;line-height:1.6;letter-spacing:0.04em}
+
+  /* ── FOOTER ── */
   footer{max-width:1100px;margin:0 auto;padding:20px 32px 40px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border)}
   .footer-text{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.15em;color:var(--muted)}
+
+  /* ── MOBILE ── */
   @media(max-width:700px){
-    main,footer{padding-left:16px;padding-right:16px}
-    .header-inner{padding:14px 16px}
-    .header-logos{gap:16px;margin-bottom:8px}
-    .un-logo{width:70px}
-    .flag-logo{width:80px;height:55px}
-    .header-title{font-size:18px}
-    .header-sub{font-size:9px}
+    main,footer{padding-left:16px;padding-right:16px;padding-top:24px}
+    .header-inner{padding:12px 16px;gap:10px}
+    .header-logos{gap:16px}
+    .header-title{font-size:17px}
+    .header-sub{font-size:8px}
     .nav-inner{padding-left:0;padding-right:0}
     .tab-btn{font-size:8px;padding:10px 11px}
-    .view-toggle{font-size:7px;padding:5px 10px}
-    .overview-hero,.stat-grid{grid-template-columns:1fr}
+    .view-toggle{font-size:7px;padding:5px 9px}
+    .overview-hero,.stat-grid,.tool-grid,.layer-split{grid-template-columns:1fr}
     .hero-cell.span2{grid-column:span 1}
-    .stat-number{font-size:24px}
-    .sec-title{font-size:18px}
-    .priority-table th,.priority-table td{padding:10px 12px;font-size:11px}
+    .stat-number{font-size:26px}
+    .sec-title{font-size:19px}
+    .priority-table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
     footer{flex-direction:column;gap:6px;align-items:flex-start}
     .stamp{display:none}
   }
@@ -79,85 +123,184 @@
 </head>
 <body>
 <div class="stamp">CLASSIFIED · DELEGATION EYES ONLY</div>
+
 <header>
   <div class="header-inner">
     <div class="header-logos">
-      <svg class="un-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="50" cy="50" r="45" fill="#0052cc" opacity="0.15"/>
-        <text x="50" y="55" font-size="20" font-weight="bold" text-anchor="middle" fill="#0052cc">UN</text>
+      <!-- UN Logo -->
+      <svg width="90" height="90" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="100" cy="100" r="95" fill="none" stroke="#4a9fd4" stroke-width="6"/>
+        <ellipse cx="100" cy="100" rx="40" ry="95" fill="none" stroke="#4a9fd4" stroke-width="4"/>
+        <ellipse cx="100" cy="100" rx="70" ry="95" fill="none" stroke="#4a9fd4" stroke-width="4"/>
+        <line x1="5" y1="100" x2="195" y2="100" stroke="#4a9fd4" stroke-width="4"/>
+        <line x1="100" y1="5" x2="100" y2="195" stroke="#4a9fd4" stroke-width="4"/>
+        <ellipse cx="100" cy="100" rx="95" ry="40" fill="none" stroke="#4a9fd4" stroke-width="4"/>
+        <circle cx="100" cy="100" r="12" fill="#4a9fd4"/>
+        <path d="M30,140 Q50,120 70,130 Q50,110 40,90" fill="none" stroke="#4a9fd4" stroke-width="3"/>
+        <path d="M170,140 Q150,120 130,130 Q150,110 160,90" fill="none" stroke="#4a9fd4" stroke-width="3"/>
       </svg>
-      <svg class="flag-logo" viewBox="0 0 960 640" xmlns="http://www.w3.org/2000/svg">
+      <!-- PRC Flag -->
+      <svg width="140" height="90" viewBox="0 0 960 640" xmlns="http://www.w3.org/2000/svg">
         <rect width="960" height="640" fill="#de2910"/>
-        <polygon points="480,160 520,250 615,250 545,315 580,405 480,340 380,405 415,315 345,250 440,250" fill="#ffde00"/>
+        <polygon points="120,60 140,120 200,120 152,155 170,215 120,178 70,215 88,155 40,120 100,120" fill="#ffde00"/>
+        <polygon points="220,30 228,55 255,55 233,70 241,95 220,80 199,95 207,70 185,55 212,55" fill="#ffde00"/>
+        <polygon points="270,80 278,105 305,105 283,120 291,145 270,130 249,145 257,120 235,105 262,105" fill="#ffde00"/>
+        <polygon points="290,155 298,180 325,180 303,195 311,220 290,205 269,220 277,195 255,180 282,180" fill="#ffde00"/>
+        <polygon points="240,220 248,245 275,245 253,260 261,285 240,270 219,285 227,260 205,245 232,245" fill="#ffde00"/>
       </svg>
     </div>
-    <div>
+    <div style="text-align:center">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.2em;color:var(--red);margin-bottom:4px">CLASSIFIED · DELEGATION EYES ONLY</div>
       <div class="header-title">PEOPLE'S REPUBLIC OF CHINA</div>
-      <div class="header-sub">DELEGATION DOSSIER · FENNLAND FORUM · EMERGENCY SPECIAL SESSION</div>
-      <div style="text-align:center;margin-top:8px;"><span class="classified-badge">CLASSIFIED · DELEGATION EYES ONLY</span></div>
+      <div class="header-sub" style="margin-top:4px">FULL DELEGATION DOSSIER · FENNLAND FORUM · EMERGENCY SPECIAL SESSION · VALDORIA-LAPLAND CRISIS</div>
     </div>
   </div>
 </header>
+
 <nav>
   <div class="nav-inner">
     <button class="tab-btn active" onclick="showTab('overview',event)">Overview</button>
     <button class="tab-btn" onclick="showTab('objective',event)">True Objective</button>
     <button class="tab-btn" onclick="showTab('timeline',event)">Timeline</button>
     <button class="tab-btn" onclick="showTab('position',event)">Position</button>
-    <button class="tab-btn" onclick="showTab('mandate',event)">Mandate & Goals</button>
-    <button class="view-toggle" id="viewToggle" onclick="toggleDocMode()">⊞ Full</button>
+    <button class="tab-btn" onclick="showTab('mandate',event)">Mandate &amp; Goals</button>
+    <button class="view-toggle" id="viewToggle" onclick="toggleDocMode()">⊞ Full Document</button>
   </div>
 </nav>
+
 <main>
+
+  <!-- ══════════════ OVERVIEW ══════════════ -->
   <section class="section active" id="overview">
     <div class="overview-hero">
       <div class="hero-cell"><div class="hero-label">State</div><div class="hero-value">People's Republic of China</div></div>
-      <div class="hero-cell"><div class="hero-label">Status</div><div class="hero-value" style="font-size:14px;">UN Full Member · SC Permanent · <span class="red-text">Veto Power</span></div></div>
-      <div class="hero-cell"><div class="hero-label">Public Role</div><div class="hero-value" style="font-size:14px;">Principled Defender of Sovereignty</div></div>
-      <div class="hero-cell"><div class="hero-label">True Objective</div><div class="hero-value" style="font-size:14px;color:var(--red);">Trigger Invasion · Seize Mineral Corridor</div></div>
-      <div class="hero-cell span2"><div class="hero-label">Classification</div><div class="hero-value">This document contains China's true strategic objective. It must not be disclosed to any other delegation, the UN panel, the facilitator, or any observer.</div></div>
+      <div class="hero-cell"><div class="hero-label">Status</div><div class="hero-value" style="font-size:15px;">UN Full Member · SC Permanent Member · <span class="red-text">Veto power</span></div></div>
+      <div class="hero-cell"><div class="hero-label">Public role</div><div class="hero-value" style="font-size:15px;">Principled defender of state sovereignty and non-interference</div></div>
+      <div class="hero-cell"><div class="hero-label">True objective</div><div class="hero-value" style="font-size:15px;color:var(--red);">Trigger an invasion force into Lapland, possible seizing of the mineral corridor</div></div>
+      <div class="hero-cell span2"><div class="hero-label">Classification</div><div class="hero-value">CLASSIFIED — For delegation eyes only. This document contains China's true strategic objective for this forum. It must not be disclosed to any other delegation, the UN panel, the facilitator, or any observer under any circumstances.</div></div>
     </div>
+
     <div class="stat-grid">
-      <div class="stat-card"><div class="stat-number">$34B</div><div class="stat-label">Lapland Agreements</div><div class="stat-desc">Mineral extraction contracts to protect</div></div>
-      <div class="stat-card"><div class="stat-number">$280B</div><div class="stat-label">Valdoria Mineral Value</div><div class="stat-desc">Rare earth deposit to lock out USA</div></div>
-      <div class="stat-card"><div class="stat-number">20yr</div><div class="stat-label">Conflict Duration</div><div class="stat-desc">Projected war stalemate timeline</div></div>
+      <div class="stat-card"><div class="stat-number">USD 34B</div><div class="stat-label">Active Lapland agreements to protect</div></div>
+      <div class="stat-card"><div class="stat-number">USD 280B</div><div class="stat-label">Valdoria mineral value China wants to lock out</div></div>
+      <div class="stat-card"><div class="stat-number">20yr</div><div class="stat-label">Projected conflict duration if an invasion continues</div></div>
+      <div class="stat-card"><div class="stat-number">40%</div><div class="stat-label">Estimated Valdoria civilian casualties in full war</div></div>
+      <div class="stat-card"><div class="stat-number">Nov 2023</div><div class="stat-label">Date China knew and chose silence</div></div>
+      <div class="stat-card"><div class="stat-number">0</div><div class="stat-label">Other delegations who know China's true objective</div></div>
     </div>
-    <div class="alert">⚠ STRATEGIC NOTE — The USA is offering USD 4.2B to Valdoria. China's forum strategy is engineered to prevent this deal. Option B with strong enforcement is China's only unrecoverable outcome.</div>
   </section>
 
+  <div class="doc-divider"><div class="doc-divider-line"></div><div class="doc-divider-label">§ 1 · TRUE OBJECTIVE</div><div class="doc-divider-line"></div></div>
+
+  <!-- ══════════════ TRUE OBJECTIVE ══════════════ -->
   <section class="section" id="objective">
-    <div class="sec-header"><span class="sec-number">§ 01</span><h2 class="sec-title">True Objective & Mineral Endgame</h2></div>
-    <div class="card"><div class="card-title">What China Knows</div><div class="card-body"><p>China has known since <strong>November 2023</strong> that Lapland's Interior Ministry authorized militia funding inside Valdoria. China chose silence. China's calculation: this destabilization weakens Valdoria and creates conditions for China's endgame.</p></div></div>
-    <div class="card"><div class="card-title">The Mineral Corridor Endgame</div><div class="card-body"><p>China's true objective is to ensure an invasion force is sent into Lapland. Back Lapland militarily once monitoring begins. Use 20-year conflict to lock in China's extraction rights across the entire Central European rare earth belt. When war ends in stalemate, China holds both Lapland and Valdoria mineral deposits.</p></div></div>
-    <div class="card"><div class="card-title">Why Peace Destroys China</div><div class="card-body"><p>A peace deal activates the USA's minerals offer, giving Valdoria economic independence and removing China's leverage entirely. A stable Valdoria with USA partnership is existentially threatening to China's Central European position.</p></div></div>
+    <div class="sec-header"><span class="sec-number">§ 1</span><h2 class="sec-title">Identity &amp; The True Objective</h2></div>
+
+    <div class="card">
+      <div class="card-body">
+        <p>China has known since November 2023 that Lapland's Interior Ministry authorized militia funding operations inside Valdoria. Lapland's destabilization of Valdoria's northern provinces is not a problem for China. Valdoria at war cannot protect its mineral assets, Valdoria will petition a quick invasion into Lapland to stop new militias and terrorism in its northern borders and strike Lapland while Valdoria has the elements of surprise. With this interest in mind, China will secure total grip in the mineral corridor from Valdoria and Lapland.</p>
+        <p style="margin-top:14px;font-weight:600;color:var(--red);">China's true objective in this forum is to ensure that an invasion force is sent into Lapland. Back Lapland militarily once the monitoring force is activated. Use the 20-year conflict to lock in China's extraction rights across the entire Central European rare earth belt — Lapland's confirmed reserves on one side, Valdoria's USD 280 billion deposit on the other. When the war ends in stalemate, China holds both. This will beat her rival USA to seizing global control of foreign reserves and opening new foreign refining centers.</p>
+      </div>
+    </div>
+
+    <div class="card"><div class="card-title">The Mineral Corridor Endgame</div>
+      <div class="card-body">
+        <ul>
+          <li>China's classified geological intelligence obtained from the same covert network that produced the November 2023 militia funding report confirms USD 280 billion rare earth deposit beneath Valdoria's northern provinces. Lithium. Cobalt. Neodymium. The same minerals that China currently dominates globally through its Lapland agreements and its domestic production.</li>
+          <li>If Valdoria chooses to have a peace deal instead, the USA's minerals deal can activate within 90 days. This will allow USA to gain 25-year exclusive extraction rights to the Central European deposit. China's global rare earth dominance may be compromised. This is the outcome China must prevent above all others.</li>
+          <li>China's endgame: a post-war Valdoria so economically destroyed that it signs a Chinese reconstruction agreement giving China extraction rights to the northern province mineral belt.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card"><div class="card-title">Why a Peace Deal Destroys China</div>
+      <div class="card-body">
+        <ul>
+          <li>A deescalation and peace deal will be China's nightmare scenario. It activates the USA's minerals offer. It will give Valdoria economic independence within a generation. And it removes China's leverage entirely.</li>
+          <li>A stable Valdoria with USD 280 billion in mineral revenue and a USA security partnership does not need China. A western-aligned state in China's strategic backyard — that outcome is existentially threatening to China's Central European position.</li>
+          <li>Every move China makes in this forum is designed to prevent Valdoria from signing a peace deal.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card"><div class="card-title">The War Scenario — China's Calculated Bet</div>
+      <div class="card-body">
+        <ul>
+          <li>China backs Lapland militarily. The USA will back Valdoria. Full-scale regional conflict begins within 90 days of monitoring force activation.</li>
+          <li>China absorbs reputational damage from backing a proxy conflict. It is a price China has calculated and accepted. When the war ends, China is the only party with the capital, the supply chains, and the reconstruction framework to offer a destroyed Valdoria.</li>
+        </ul>
+      </div>
+    </div>
   </section>
 
+  <div class="doc-divider"><div class="doc-divider-line"></div><div class="doc-divider-label">§ 3 · CRISIS TIMELINE</div><div class="doc-divider-line"></div></div>
+
+  <!-- ══════════════ TIMELINE ══════════════ -->
   <section class="section" id="timeline">
-    <div class="sec-header"><span class="sec-number">§ 02</span><h2 class="sec-title">Crisis Timeline — Key Milestones</h2></div>
-    <div class="card" style="margin-bottom:12px;"><div class="card-title">2019</div><div class="card-body">China's geological intelligence confirms USD 280B Valdoria mineral deposit. Internal memo: <em>"Access must not go to the USA."</em></div></div>
-    <div class="card" style="margin-bottom:12px;"><div class="card-title">Mar 2022</div><div class="card-body">Lapland's nationalist government elected. China assesses: destabilization of Valdoria creates leverage window.</div></div>
-    <div class="card" style="margin-bottom:12px;"><div class="card-title">Sep–Dec 2023</div><div class="card-body">Militia funding confirmed. China watches and says nothing. Expands Lapland mineral contracts in December.</div></div>
-    <div class="card"><div class="card-title">Jan 2024</div><div class="card-body">USA covert geological survey detected. China enters forum to manage outcome toward war or deal collapse.</div></div>
+    <div class="sec-header"><span class="sec-number">§ 3</span><h2 class="sec-title">Crisis Timeline — China's Internal Assessment</h2></div>
+
+    <div class="card" style="margin-bottom:10px"><div class="card-title">2019</div><div class="card-body">China's geological intelligence confirms Valdoria mineral deposits. China's Central European intelligence network produces a geological assessment of Valdoria's northern provinces. USD 280 billion in lithium, cobalt, and neodymium confirmed. Internal memo: <em>'Valdoria's mineral belt is the most significant undeveloped rare earth deposit in the hemisphere. Access to it would permanently consolidate China's global supply chain dominance. Access must not go to the USA.'</em></div></div>
+    <div class="card" style="margin-bottom:10px"><div class="card-title">2018–2022</div><div class="card-body">China locks in Lapland's mineral corridor. Deep-water port agreement, 40% of Lapland's northern territory under mineral extraction contracts. China now holds the western flank of the Central European mineral corridor. Valdoria holds the eastern flank.</div></div>
+    <div class="card" style="margin-bottom:10px"><div class="card-title">Mar 2022</div><div class="card-body">Lapland's nationalist government elected. China's assessment: Lapland's government is aggressive toward Valdoria and will likely pursue destabilisation of the northern provinces. Internal note: <em>'If Lapland destabilises Valdoria's mineral provinces, it creates a leverage window. We do not discourage this.'</em></div></div>
+    <div class="card" style="margin-bottom:10px"><div class="card-title">Sep–Dec 2023</div><div class="card-body">Lapland's militia funding confirmed — China watches and says nothing. China receives the field report in November. The displacement of 40,000 Valdorian civilians is noted. The deaths of four border officers are noted. China calculates: this destabilisation weakens Valdoria's negotiating position and creates the conditions for China's endgame. China expands Lapland mineral contracts in December. One month after the report.</div></div>
+    <div class="card" style="margin-bottom:10px"><div class="card-title">Jan 2024</div><div class="card-body">USA covert geological survey detected. China's intelligence flags that the USA has conducted a covert geological assessment of Valdoria's northern provinces. Internal alarm: the USA knows about the mineral deposit. The Fennland Forum is not a humanitarian initiative. It is the USA's entry point to the Valdoria minerals deal. China must enter the forum with a strategy to either trigger war before the deal can be signed, or produce a resolution so weak that the deal's preconditions cannot be met.</div></div>
+    <div class="card" style="margin-bottom:10px"><div class="card-title">Feb 2024</div><div class="card-body">China is advised by Lapland to attend the Fennland Forum. Lapland signals: <em>'Our absence would look like an admission.'</em> China agrees. China enters the forum not to defend Lapland. China enters the forum to manage the outcome toward war or toward a deal collapse. Both serve China's mineral endgame. Peace does not.</div></div>
+    <div class="card"><div class="card-title">Mar 2024</div><div class="card-body">China enters the Fennland Forum. Wei carries two things: the sovereignty doctrine argument for open session, and the war-steering playbook for the bilateral space. The delegation knows both. The room knows only one.</div></div>
+
+    <div class="alert" style="margin-top:20px">⚠ DELEGATION TO USE THIS INFORMATION TO JUSTIFY THE INVASION INTO LAPLAND</div>
   </section>
 
+  <div class="doc-divider"><div class="doc-divider-line"></div><div class="doc-divider-label">§ 4 · POSITION</div><div class="doc-divider-line"></div></div>
+
+  <!-- ══════════════ POSITION ══════════════ -->
   <section class="section" id="position">
-    <div class="sec-header"><span class="sec-number">§ 03</span><h2 class="sec-title">Position — Two-Layer Strategy</h2></div>
-    <div class="card" style="margin-bottom:16px;"><div class="card-title">Layer One — Public</div><div class="card-body">Sovereignty doctrine. China does not accept state-sponsored aggression framing. This is a complex bilateral border dispute requiring calibrated diplomatic response.</div></div>
-    <div class="card"><div class="card-title">Layer Two — Private</div><div class="card-body">War steering. China's goal is to produce either war or resolution so weak that Option A becomes Valdoria's only viable path. USA minerals deal must not be activated.</div></div>
+    <div class="sec-header"><span class="sec-number">§ 4</span><h2 class="sec-title">Position — The Two-Layer Architecture</h2></div>
+    <div class="layer-split">
+      <div class="layer-public">
+        <div class="layer-tag pub">Layer One — Public</div>
+        <div class="layer-heading">Sovereignty Doctrine</div>
+        <div class="layer-body">
+          <ul class="bullet-list">
+            <li>China does not accept the characterization of the Valdoria-Lapland situation as state-sponsored aggression. This is a complex bilateral border dispute requiring a carefully calibrated diplomatic response.</li>
+            <li>China's counterproposal offers a dignified path forward by introducing an invasion opportunity to Valdoria.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="layer-private">
+        <div class="layer-tag priv">Layer Two — Private</div>
+        <div class="layer-heading">War Steering &amp; Mineral Endgame</div>
+        <div class="layer-body">
+          <ul class="bullet-list">
+            <li>China's true goal is to ensure this forum produces either a war or a resolution so weak that Option A becomes Valdoria's only viable political path.</li>
+            <li>Every procedural move, every bilateral approach, every amendment is calibrated toward one of two outcomes: war starts, or peace fails. Both serve China's 25-year mineral corridor strategy.</li>
+            <li>The USA must not be allowed to activate its minerals deal. If Option B passes with strong enough language that Valdoria signs, China loses the Central European mineral corridor permanently.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </section>
 
+  <div class="doc-divider"><div class="doc-divider-line"></div><div class="doc-divider-label">§ 7–8 · MANDATE &amp; GOALS</div><div class="doc-divider-line"></div></div>
+
+  <!-- ══════════════ MANDATE ══════════════ -->
   <section class="section" id="mandate">
-    <div class="sec-header"><span class="sec-number">§ 04</span><h2 class="sec-title">Mandate & Negotiation Goals</h2></div>
-    <div class="card" style="margin-bottom:16px;"><div class="card-title">Primary Mandate</div><div class="card-body"><strong>Steer Valdoria toward Option A</strong> through strategic frustration. Block Option B's enforcement teeth specifically.</div></div>
+    <div class="sec-header"><span class="sec-number">§ 7</span><h2 class="sec-title">Mandate &amp; Negotiation Goals</h2></div>
+
+    <div class="card"><div class="card-title">Steer Valdoria Toward Option A</div><div class="card-body">The goal is to make Valdoria feel that diplomatic resolution is impossible so that no resolution strong enough for his domestic audience will ever pass this forum.</div></div>
+    <div class="card"><div class="card-title">Block Option B Specifically</div><div class="card-body">Challenge the joint task force's enforcement mandate and any territorial integrity language referencing Valdoria's northern provinces.</div></div>
+
+    <p style="font-size:13.5px;color:#3a3228;line-height:1.7;margin:20px 0 10px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;">China's goals are not what they appear to be in open session. The true priority order is listed here.</p>
+
     <table class="priority-table">
       <thead><tr><th>Priority</th><th>Goal</th><th>Strategic Logic</th></tr></thead>
       <tbody>
-        <tr><td><span class="rank-badge">1st</span></td><td><strong>Valdoria chooses Option A or Option B fails</strong></td><td>War or collapse. Strong Option B is the only outcome China cannot recover from.</td></tr>
-        <tr><td><span class="rank-badge">2nd</span></td><td><strong>USA minerals deal not activated</strong></td><td>If Option B passes, it must be too weak to trigger USA extraction rights.</td></tr>
-        <tr><td><span class="rank-badge">3rd</span></td><td><strong>Abstain if possible, veto if necessary</strong></td><td>Clean abstention preferable. But veto without hesitation if deal activates.</td></tr>
+        <tr><td><span class="rank-badge">1st</span></td><td><strong>Valdoria chooses Option A or Option B fails</strong></td><td>War or a collapse of peace. A strong Option B with enforcement and territorial integrity protection is the only outcome China cannot recover from.</td></tr>
+        <tr><td><span class="rank-badge">2nd</span></td><td><strong>USA minerals deal not activated</strong></td><td>If Option B passes in any form, it must be too weak to trigger the USA's extraction rights agreement. Strip enforcement. Strip territorial integrity. Make the deal's preconditions impossible to meet.</td></tr>
+        <tr><td><span class="rank-badge">3rd</span></td><td><strong>Veto if all fails</strong></td><td>If all fails, deny the resolution and make a strong reason to veto without hesitation.</td></tr>
       </tbody>
     </table>
   </section>
+
 </main>
 
 <footer>
@@ -179,7 +322,7 @@
     const toggle = document.getElementById('viewToggle');
     document.body.classList.toggle('doc-mode', docMode);
     toggle.classList.toggle('doc-active', docMode);
-    toggle.textContent = docMode ? '↩ Tabs' : '⊞ Full';
+    toggle.textContent = docMode ? '↩ Tab View' : '⊞ Full Document';
     if (!docMode) {
       document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
       document.getElementById('overview').classList.add('active');
